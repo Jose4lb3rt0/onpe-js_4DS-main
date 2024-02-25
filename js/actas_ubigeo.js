@@ -79,22 +79,60 @@ const getDistritos = async (provincia) => {
 let distritoElegido=''
 const getLocales = async(distrito)=>{
     distritoElegido = distrito;
-    const data = await fetch(`https://oaemdl.es/onpe_sweb_php/actas/ubigeo/${ambito}/${departamentoElegido}/${provinciaElegida}/${distritoElegido}`)
+    const data = await fetch(`https://oaemdl.es/onpe_sweb_php/actas/ubigeo/${ambito}/${departamentoElegido}/${provinciaElegida}/${distrito}`)
     if (data.status == 200){
         const locales = await data.json();
         let html = `
-        <select name="actas_ubigeo" id="actas_ubigeo" class="form-control">
+        <select name="actas_ubigeo" id="actas_ubigeo" class="form-control" onchange="getMesas(this.value);">
         <option value="" selected="selected">--SELECCIONE--</option>
         `
         locales.forEach(local=>{
+          if(local.RazonSocial != null){
             html += `<option value="${local.RazonSocial}">${local.RazonSocial}</option>`
-        })
+          }else{
+            
+          }
+        });
         html += `</select>`
         document.getElementById('divLocal').innerHTML=html
     }
 }
 
-
+let localElegido=''
+const getMesas = async(local)=>{
+    localElegido=local
+    const data = await fetch(`https://oaemdl.es/onpe_sweb_php/actas/ubigeo/${ambito}/${departamentoElegido}/${provinciaElegida}/${distritoElegido}/${localElegido}`)
+    if (data.status==200){
+        const mesas = await data.json();
+        let html = `
+            <div class="col-xs-12 pbot30">
+                <p class="subtitle">LISTADO DE MESAS</p>
+                    <div id="page-wrap">
+                        <table class="table17" cellspacing="0">
+                            <tbody>
+                            <tr>
+        `
+        num = parseInt(0);
+        mesas.forEach(mesa=>{
+            html += `
+                <td bgcolor="#C1C1C1" onclick="verDetalleMesa('010202', '000178', '10', '1')" style="cursor:pointer"><a href="#">${mesa.idGrupoVotacion}</a></td>
+            `
+            num+=parseInt(1)
+            if(num==10){
+                html+=`</tr><tr>`
+            }
+        })
+        html+=`
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        `
+        document.getElementById('divMesas').innerHTML=html
+    }
+}
 
 
 /*
