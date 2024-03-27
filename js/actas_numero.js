@@ -5,7 +5,7 @@ const getActa = async()=>{
         alert('Ingrese un número de acta')
         return
     }
-    if(nroMesa.lenght < 6){
+    if(nroMesa.length < 6){
         alert('No es un número de acta valido')
         return
     }

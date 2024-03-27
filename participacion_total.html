@@ -114,65 +114,31 @@
                   <div class="col-xs-12 col-md-6">
                     <img src="imagen.jpg?_tot_participacion=81.543&amp;_tot_ausentismo=18.457" class="img-responsive">
                   </div>
-
+  
                   <div class="col-xs-12 col-md-6">
                     <div class="cont-recto" style="margin-bottom:10px">
                       Ámbito: Nacional
                     </div>
                     <p class="subtitle">ELECTORES HÁBILES 22,017,030</p>
                     <div id="page-wrap">
-                      <table class="table09_2" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <th>PARTICIPACIÓN</th>
-                            <th>AUSENTISMO</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>TOTAL: 17,953,367</td>
-                            <td>TOTAL: 4,063,663</td>
-                          </tr>
-                          <tr>
-                            <td>% TOTAL: 81.543%</td>
-                            <td>% TOTAL: 18.457%</td>
-                          </tr>
-                        </tbody>
+                      <table id="tablaparticipacion" class="table09_2" cellspacing="0">
+
+                        
+
                       </table>
                     </div>
                   </div>
 
                 </div>
                 
-                <div class="col-xs-12">
+                <div id="" class="col-xs-12">
                   <p class="subtitle">Consulta de participación DETALLADO </p>
                   <div id="page-wrap">
                     <table class="table21">
                       <tbody id="resultados">
-                        <tr class="titulo_tabla">
-                          <td>DEPARTAMENTO</td>
-                          <td>TOTAL ASISTENTES</td>
-                          <td>% TOTAL ASISTENTES</td>
-                          <td>TOTAL AUSENTES</td>
-                          <td>% TOTAL AUSENTES</td>
-                          <td>ELECTORES HÁBILES</td>
-                        </tr>
-                        <tr onclick="location.href='./participacion_total.html?id=nacional,AMAZONAS'" onmouseover="this.style.cursor = &quot;pointer&quot;; this.style.color = &quot;grey&quot;" onmouseout="this.style.color = &quot;black&quot;" style="cursor: pointer; color: black;">
-                          <td>AMAZONAS</td>
-                          <td>182,570</td>
-                          <td>67.575%</td>
-                          <td>87,605</td>
-                          <td>32.425%</td>
-                          <td>270,175</td>
-                        </tr>
-                        <tr>
-                          <td>TOTALES</td>
-                          <td>17,953,367</td>
-                          <td>81.543%</td>
-                          <td>4,063,663</td>
-                          <td>18.457%</td>
-                          <td>22,017,030</td>
-                        </tr>
+
+                        <!---->
+
                       </tbody>
                     </table>
                   </div>
@@ -201,6 +167,10 @@
           </div>
         </div>
     </footer>
-      
+    <script src="js/participacion_total.js"></script>
+    <script>getNacional('Nacional')</script>
+    <script>getDepartamento()</script>
+    <script>getProvincia()</script>
+    <script>getElectores()</script>
   </body>
 </html>
